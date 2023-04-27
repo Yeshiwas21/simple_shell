@@ -107,7 +107,7 @@ typedef struct passinfo
 typedef struct builtin
 {
 	char *type;
-	int (*func)(info_t *);
+	int (*func)(info_t *info);
 } builtin_table;
 
 
