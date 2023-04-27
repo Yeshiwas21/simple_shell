@@ -76,19 +76,19 @@ list_t *add_node_end(list_t **head, const char *str, int num)
 
 /**
  * print_list_str - prints only the str element of a list_t linked list
- * @first_node: pointer to first node
+ * @h: pointer to first node
  *
  * Return: size of list
  */
-size_t print_list_str(const list_t *first_node)
+size_t print_list_str(const list_t *h)
 {
 	size_t i = 0;
 
-	while (first_node)
+	while (h)
 	{
-		_puts(first_node->str ? first_node->str : "(nil)");
+		_puts(h->str ? h->str : "(nil)");
 		_puts("\n");
-		first_node = first_node->next;
+		h = h->next;
 		i++;
 	}
 	return (i);
