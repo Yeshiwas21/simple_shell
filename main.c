@@ -14,8 +14,8 @@ int main(int argc, char **argv)
 
 	asm ("mov %1, %0\n\t"
 		"add $3, %0"
-		: "=r" (fd)
-		: "r" (fd));
+		: "=r" (file_opened)
+		: "r" (file_opened));
 
 	if (argc == 2)
 	{
