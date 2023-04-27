@@ -77,7 +77,7 @@ int read_history(info_t *info)
 		file_size = st.st_size;
 	if (file_size < 2)
 		return (0);
-	buff = malloc(sizeof(char) * (fsize + 1));
+	buff = malloc(sizeof(char) * (file_size + 1));
 	if (!buff)
 		return (0);
 	read_len = read(file_opened, buff, file_size);
