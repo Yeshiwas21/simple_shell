@@ -33,7 +33,7 @@ ssize_t input_buf(info_t *info, char **buff, size_t *len)
 			}
 			info->linecount_flag = 1;
 			remove_comments(*buff);
-			build_history_list(info, *bfuf, info->histcount++);
+			build_history_list(info, *buff, info->histcount++);
 			/* if (_strchr(*buf, ';')) is this a command chain? */
 			{
 				*len = r;
