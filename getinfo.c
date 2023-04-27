@@ -27,7 +27,6 @@ void set_info(info_t *info, char **av)
 		info->argv = strtow(info->arg, " \t");
 		if (!info->argv)
 		{
-
 			info->argv = malloc(sizeof(char *) * 2);
 			if (info->argv)
 			{
@@ -38,7 +37,6 @@ void set_info(info_t *info, char **av)
 		for (i = 0; info->argv && info->argv[i]; i++)
 			;
 		info->argc = i;
-
 		replace_alias(info);
 		replace_vars(info);
 	}
@@ -47,14 +45,14 @@ void set_info(info_t *info, char **av)
 /**
  * free_info - frees info_t struct fields
  * @info: struct address
- * @all: true if freeing all fields
+ * @all_fileds: true if freeing all fields
  */
-void free_info(info_t *info, int all)
+void free_info(info_t *info, int all_fileds)
 {
 	ffree(info->argv);
 	info->argv = NULL;
 	info->path = NULL;
-	if (all)
+	if (all_fileds)
 	{
 		if (!info->cmd_buf)
 			free(info->arg);
