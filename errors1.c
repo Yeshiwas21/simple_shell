@@ -131,7 +131,7 @@ void remove_comments(char *buf)
 {
 	int i = 0;
 
-	while(buf[i] != '\0')
+	while (buf[i] != '\0')
 	{
 		if (buf[i] == '#' && (!i || buf[i - 1] == ' '))
 		{
