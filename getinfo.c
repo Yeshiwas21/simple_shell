@@ -47,7 +47,7 @@ void set_info(info_t *info, char **av)
  * @info: struct address
  * @all_fileds: true if freeing all fields
  */
-void free_info(info_t *info, int all)
+void free_info(info_t *info, int all_fileds)
 {
 	ffree(info->argv);
 	info->argv = NULL;
