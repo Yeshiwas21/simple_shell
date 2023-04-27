@@ -54,40 +54,40 @@ int _unsetenv(info_t *info, char *var)
  *             or modify an existing one
  * @info: Structure containing potential arguments. Used to maintain
  *        constant function prototype.
- * @var: the string env var property
+ * @evar: the string env var property
  * @value: the string env var value
  *  Return: Always 0
  */
-int _setenv(info_t *info, char *var, char *value)
+int _setenv(info_t *info, char *evar, char *value)
 {
-	char *buf = NULL;
+	char *buff = NULL;
 	list_t *node;
 	char *p;
 
-	if (!var || !value)
+	if (!evar || !value)
 		return (0);
 
-	buf = malloc(_strlen(var) + _strlen(value) + 2);
-	if (!buf)
+	buff = malloc(_strlen(evar) + _strlen(value) + 2);
+	if (!buff)
 		return (1);
-	_strcpy(buf, var);
-	_strcat(buf, "=");
-	_strcat(buf, value);
+	_strcpy(buff, evar);
+	_strcat(buff, "=");
+	_strcat(buff, value);
 	node = info->env;
 	while (node)
 	{
-		p = starts_with(node->str, var);
+		p = starts_with(node->str, evar);
 		if (p && *p == '=')
 		{
 			free(node->str);
-			node->str = buf;
+			node->str = buff;
 			info->env_changed = 1;
 			return (0);
 		}
 		node = node->next;
 	}
-	add_node_end(&(info->env), buf, 0);
-	free(buf);
+	add_node_end(&(info->env), buff, 0);
+	free(buff);
 	info->env_changed = 1;
 	return (0);
 }
