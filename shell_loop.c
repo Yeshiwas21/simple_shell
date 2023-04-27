@@ -59,11 +59,11 @@ int find_builtin(info_t *info)
 		{"exit", shell_exit},
 		{"env", _myenv},
 		{"help", shell_help},
-		{"history", _myhistory},
+		{"history", shell_history},
 		{"setenv", _mysetenv},
 		{"unsetenv", _myunsetenv},
 		{"cd", shell_cd},
-		{"alias", _myalias},
+		{"alias", shell_alias},
 		{NULL, NULL}
 	};
 
