@@ -65,7 +65,7 @@ char *_strchr(char *str, char chr)
 {
 	do {
 		if (*str == chr)
-			return (s);
+			return (str);
 	} while (*str++ != '\0');
 
 	return (NULL);
