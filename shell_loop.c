@@ -3,11 +3,11 @@
 /**
  * hsh - main shell loop
  * @info: the parameter & return info struct
- * @av: the argument vector from main()
+ * @argv: the argument vector from main()
  *
  * Return: 0 on success, 1 on error, or error code
  */
-int hsh(info_t *info, char **av)
+int hsh(info_t *info, char **argv)
 {
 	ssize_t r = 0;
 	int builtin_ret = 0;
@@ -21,7 +21,7 @@ int hsh(info_t *info, char **av)
 		r = get_input(info);
 		if (r != -1)
 		{
-			set_info(info, av);
+			set_info(info, argv);
 			builtin_ret = find_builtin(info);
 			if (builtin_ret == -1)
 				find_cmd(info);
