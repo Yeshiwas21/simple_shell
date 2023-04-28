@@ -38,14 +38,14 @@ int is_chain(info_t *info, char *buf, size_t *p)
 /**
  * check_chain - checks we should continue chaining based on last status
  * @info: the parameter struct
- * @buf: the char buffer
+ * @buff: the char buffer
  * @p: address of current position in buf
- * @i: starting position in buf
+ * @index: starting position in buf
  * @len: length of buf
  *
  * Return: Void
  */
-void check_chain(info_t *info, char *buf, size_t *p, size_t i, size_t len)
+void check_chain(info_t *info, char *buff, size_t *p, size_t index, size_t len)
 {
 	size_t j = *p;
 
@@ -53,7 +53,7 @@ void check_chain(info_t *info, char *buf, size_t *p, size_t i, size_t len)
 	{
 		if (info->status)
 		{
-			buf[i] = 0;
+			buff[index] = 0;
 			j = len;
 		}
 	}
@@ -61,7 +61,7 @@ void check_chain(info_t *info, char *buf, size_t *p, size_t i, size_t len)
 	{
 		if (!info->status)
 		{
-			buf[i] = 0;
+			buff[index] = 0;
 			j = len;
 		}
 	}
@@ -141,14 +141,14 @@ int replace_vars(info_t *info)
 
 /**
  * replace_string - replaces string
- * @old: address of old string
- * @new: new string
+ * @old_str: address of old string
+ * @new_str: new string
  *
  * Return: 1 if replaced, 0 otherwise
  */
-int replace_string(char **old, char *new)
+int replace_string(char **old_str, char *new_str)
 {
-	free(*old);
-	*old = new;
+	free(*old_str);
+	*old_str = new_str;
 	return (1);
 }
