@@ -71,7 +71,7 @@ int read_history(info_t *info)
 
 	file_desc = open(file_name, O_RDONLY);
 	free(file_name);
-	if (fd == -1)
+	if (file_desc == -1)
 		return (0);
 	if (!fstat(file_desc, &st))
 		file_size = st.st_size;
