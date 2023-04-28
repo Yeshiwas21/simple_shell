@@ -53,7 +53,7 @@ char *dup_chars(char *path_str, int start, int stop)
 char *find_path(info_t *info, char *path_str, char *cmd)
 {
 	int i = 0, curr_pos = 0;
-	char *path_str;
+	char *path;
 
 	if (!path_str)
 		return (NULL);
@@ -76,7 +76,7 @@ char *find_path(info_t *info, char *path_str, char *cmd)
 			}
 			if (is_cmd(info, path))
 				return (path);
-			if (!pathstr[i])
+			if (!path_str[i])
 				break;
 			curr_pos = i;
 		}
