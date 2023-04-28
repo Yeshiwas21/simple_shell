@@ -33,7 +33,7 @@ char *get_history_file(info_t *info)
 int write_history(info_t *info)
 {
 	ssize_t file_desc;
-	char *filen_ame = get_history_file(info);
+	char *file_name = get_history_file(info);
 	list_t *node = NULL;
 
 	if (!file_name)
@@ -41,7 +41,7 @@ int write_history(info_t *info)
 
 	file_desc = open(file_name, O_CREAT | O_TRUNC | O_RDWR, 0644);
 	free(file_name);
-	if (fd == -1)
+	if (file_desc == -1)
 		return (-1);
 	for (node = info->history; node; node = node->next)
 	{
@@ -81,7 +81,7 @@ int read_history(info_t *info)
 	if (!buff)
 		return (0);
 	read_len = read(file_desc, buff, file_size);
-	buf[file_size] = 0;
+	buff[file_size] = 0;
 	if (read_len <= 0)
 		return (free(buff), 0);
 	close(file_desc);
@@ -116,7 +116,7 @@ int build_history_list(info_t *info, char *buff, int linecount)
 
 	if (info->history)
 		node = info->history;
-	add_node_end(&node, buf, linecount);
+	add_node_end(&node, buff, linecount);
 
 	if (!info->history)
 		info->history = node;
