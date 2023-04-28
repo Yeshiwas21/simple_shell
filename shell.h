@@ -138,10 +138,10 @@ char *starts_with(const char *haystack, const char *needle);
 char *_strcat(char *dest, char *src);
 
 /* toem_string1.c */
-char *_strcpy(char *, char *);
-char *_strdup(const char *);
-void _puts(char *);
-int _putchar(char);
+char *_strcpy(char *dest, char *src);
+char *_strdup(const char *str);
+void _puts(char *str);
+int _putchar(char chr);
 
 /* toem_exits.c */
 char *_strncpy(char *, char *, int);
