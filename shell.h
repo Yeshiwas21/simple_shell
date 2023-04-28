@@ -112,36 +112,36 @@ typedef struct builtin
 
 
 /* toem_shloop.c */
-int hsh(info_t *info, char **av);
-int find_builtin(info_t *info);
-void find_cmd(info_t *info);
-void fork_cmd(info_t *info);
+int hsh(info_t *, char **);
+int find_builtin(info_t *);
+void find_cmd(info_t *);
+void fork_cmd(info_t *);
 
 /* toem_parser.c */
-int is_cmd(info_t *info, char *path);
-char *dup_chars(char *path_str, int start, int stop);
-char *find_path(info_t *info, char *path_str, char *cmd);
+int is_cmd(info_t *, char *);
+char *dup_chars(char *, int, int);
+char *find_path(info_t *, char *, char *);
 
 /* loophsh.c */
 int loophsh(char **);
 
 /* toem_errors.c */
-void _eputs(char *str);
-int _eputchar(char chr)
+void _eputs(char *);
+int _eputchar(char);
 int _putfd(char chr, int file_desc);
 int _putsfd(char *str, int file_desc);
 
 /* toem_string.c */
-int _strlen(char *str);
-int _strcmp(char *str1, char *str2);
-char *starts_with(const char *haystack, const char *needle);
-char *_strcat(char *dest, char *src);
+int _strlen(char *);
+int _strcmp(char *, char *);
+char *starts_with(const char *, const char *);
+char *_strcat(char *, char *);
 
 /* toem_string1.c */
-char *_strcpy(char *dest, char *src);
-char *_strdup(const char *str);
-void _puts(char *str);
-int _putchar(char chr);
+char *_strcpy(char *, char *);
+char *_strdup(const char *);
+void _puts(char *);
+int _putchar(char);
 
 /* toem_exits.c */
 char *_strncpy(char *, char *, int);
@@ -149,8 +149,8 @@ char *_strncat(char *, char *, int);
 char *_strchr(char *, char);
 
 /* toem_tokenizer.c */
-char **strtow(char *str, char *delim);
-char **strtow2(char *str, char delim);
+char **strtow(char *, char *);
+char **strtow2(char *, char);
 
 /* toem_realloc.c */
 char *_memset(char *, char, unsigned int);
@@ -162,7 +162,7 @@ int bfree(void **);
 
 /* toem_atoi.c */
 int interactive_mode(info_t *);
-int is_delim(char chr, char *delim);
+int is_delim(char chr, char *);
 int _isalpha(int chr);
 int _atoi(char *str);
 
