@@ -127,7 +127,7 @@ int loophsh(char **);
 
 /* toem_errors.c */
 void _eputs(char *str);
-int _eputchar(char chr)
+int _eputchar(char chr);
 int _putfd(char chr, int file_desc);
 int _putsfd(char *str, int file_desc);
 
@@ -225,7 +225,7 @@ size_t list_len(const list_t *first_node);
 char **list_to_strings(list_t *head);
 size_t print_list(const list_t *first_node);
 list_t *node_starts_with(list_t *node, char *prefix, char chr);
-ssize_t get_node_index(list_t *head, list_t *node)
+ssize_t get_node_index(list_t *head, list_t *node);
 
 /* toem_vars.c */
 int is_chain(info_t *info, char *buf, size_t *p);
