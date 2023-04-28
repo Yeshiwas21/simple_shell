@@ -18,16 +18,16 @@ char *_memset(char *s, char b, unsigned int n)
 
 /**
  * ffree - frees a string of strings
- * @pp: string of strings
+ * @ss: string of strings
  */
-void ffree(char **pp)
+void ffree(char **ss)
 {
-	char **a = pp;
+	char **a = ss;
 
-	if (!pp)
+	if (!ss)
 		return;
-	while (*pp)
-		free(*pp++);
+	while (*ss)
+		free(*ss++);
 	free(a);
 }
 
