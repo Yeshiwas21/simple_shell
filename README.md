@@ -1,3 +1,3 @@
-### Team pproject 0x16. C - Simple Shell
-### by Yeshiwas Dagnaw and George Omondi Owiti
+### this is a team project (0x16. C - Simple Shell)
+### by Yeshiwas Dagnaw and Eleni Mendiso
  
