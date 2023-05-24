@@ -10,46 +10,27 @@ int main(int ac, char **argv)
 {
 
 	char *line;
-
 	char *line_cpy;
-
 	char *token;
-
 	pid_t pid;
-
 	ssize_t j;
-
 	int k;
-
 	const char *delim;
-
 	int w;
-
 	int status;
-
 	int no_token;
-
 	size_t n;
-
 	int linec;
-
 	char *path;
 	char **arg;
 
 	line = NULL;
-
 	line_cpy = NULL;
-
 	token = NULL;
-
 	path = NULL;
-
 	n = 0;
-
 	linec = 0;
-
 	no_token = 0;
-
 	delim = " \n";
 
 	(void)ac;
@@ -67,9 +48,8 @@ int main(int ac, char **argv)
 			if (isatty(STDIN_FILENO))
 			{
 				write(1, "\n", 1);
-				return (0);
 			}
-			return (0);
+			exit(0);
 		}
 		if (_strncmp(line, "exit\n", 5) == 0)
 		{
@@ -138,7 +118,6 @@ int main(int ac, char **argv)
 		else if (pid == 0)
 		{
 			execuut(path, argv, arg, linec);
-			/*continue;*/
 		}
 		else
 		{

@@ -6,13 +6,13 @@
 */
 void print_env(void)
 {
-	int i;
+	size_t i;
 
 	i = 0;
 
 	while (environ[i])
 	{
-		write(STDOUT_FILENO, (const void *)environ[i], _strlen(environ[i]));
+		write(STDOUT_FILENO, environ[i], _strlen(environ[i]));
 		write(STDOUT_FILENO, "\n", 1);
 		i++;
 	}
