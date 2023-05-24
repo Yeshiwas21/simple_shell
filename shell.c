@@ -57,7 +57,8 @@ int main(int ac, char **argv, char **env)
 		line_cpy = malloc(sizeof(char) * (j + 1));
 		if (line_cpy == NULL)
 		{
-			exit(-1);
+			free(line_cpy);
+			exit(EXIT_FAILURE);
 		}
 		_strcpy(line_cpy, line);
 		token = strtok(line, delim);
