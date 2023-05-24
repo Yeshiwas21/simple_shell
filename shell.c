@@ -163,6 +163,6 @@ void execuut(char *path, char **argv, char **arg, int linec, char **env)
 	{
 		printf("%s: %d: %s: not found\n", argv[0], linec, arg[0]);
 		free(mycmd);
-		free(errno);
+		exit(errno);
 	}
 }
