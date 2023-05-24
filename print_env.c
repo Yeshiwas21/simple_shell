@@ -6,14 +6,11 @@
 */
 void print_env(char **env)
 {
-	size_t i;
-
-	i = 0;
-
-	while (env[i])
-	{
-		write(STDOUT_FILENO, env[i], _strlen(env[i]));
-		write(STDOUT_FILENO, "\n", 1);
-		i++;
-	}
+int i;
+for (i = 0; env[i] != NULL; i++)
+{
+size_t len = _strlen(env[i]);
+write(STDOUT_FILENO, env[i], len);
+write(STDOUT_FILENO, "\n", 1);
+}
 }
