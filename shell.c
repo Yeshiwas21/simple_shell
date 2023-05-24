@@ -4,6 +4,7 @@ void execuut(char *path, char **argv, char **arg, int linec, char **env);
  * main - main entrance
  * @ac: argument count
  * @argv: arrray of argument pointer
+ * @env: environ parameter
  * Return: always success 0
  */
 int main(int ac, char **argv, char **env)
@@ -87,17 +88,17 @@ int main(int ac, char **argv, char **env)
 		}
 		arg[k] = NULL;
 		if (_strncmp(line, "exit\n", 5) == 0 && arg[1] == NULL)
-                {
+		{
 			free(line);
 			free(line_cpy);
 			free(arg);
-                        exit(0);
-                }
-                if (_strncmp(line, "env\n", 4) == 0)
-                {
-                        print_env(env);
-                        continue;
-                }
+			exit(0);
+		}
+		if (_strncmp(line, "env\n", 4) == 0)
+		{
+			print_env(env);
+			continue;
+		}
 
 		if (arg[0] == NULL)
 			continue;
@@ -145,6 +146,7 @@ int main(int ac, char **argv, char **env)
  * @argv: the command and the argument for the file
  * @arg: the command and args
  * @linec: counter
+ * @env: environ
  * Return: none
  */
 void execuut(char *path, char **argv, char **arg, int linec, char **env)

@@ -1,7 +1,7 @@
 #include "shell.h"
 /**
 * print_env - prints the environment string to stdout
-*
+* @env: environ variabl
 * Return: nothing
 */
 void print_env(char **env)
