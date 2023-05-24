@@ -115,6 +115,7 @@ int main(int ac, char **argv, char **env)
 			}
 			else
 			{
+				ex = 0;
 				pid = fork();
 				if (pid == -1)
 				{
@@ -141,7 +142,7 @@ int main(int ac, char **argv, char **env)
 		free(arg[w]);
 	}
 	free(arg);
-	return (EXIT_SUCCESS);
+	return (ex);
 }
 /**
  * execuut - execute command
