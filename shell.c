@@ -71,7 +71,7 @@ int main(int ac, char **argv, char **env)
 
 		if (arg == NULL)
 		{
-			exit(-1);
+			exit(EXIT_FAILURE);
 		}
 		token = strtok(line_cpy, delim);
 
