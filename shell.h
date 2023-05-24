@@ -25,6 +25,7 @@ void print_env(char **env);
 void *get_line(void);
 int _putchar(char c);
 void free_memory_pp(void **ptr);
+int _printf(const char *format, ...);
 void free_memory_p(void *ptr);
 
 #endif

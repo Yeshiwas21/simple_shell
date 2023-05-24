@@ -117,6 +117,7 @@ int main(int ac, char **argv, char **env)
 			}
 			else
 			{
+				ex = 0;
 				pid = fork();
 				if (pid == -1)
 				{
@@ -127,13 +128,12 @@ int main(int ac, char **argv, char **env)
 				{
 					execuut(path, argv, arg, linec, env);
 					free(path);
-					exit(EXIT_FAILURE);
 				}
 				else
 				{
 					wait(&status);
 					if (WIFEXITED(status) && WEXITSTATUS(status) != 0)
-						return WEXITSTATUS(status);
+						return (WEXITSTATUS(status));
 				}
 			}
 		}
@@ -145,8 +145,8 @@ int main(int ac, char **argv, char **env)
 		free(arg);
 	}
 
-	free(line); // Free line before exiting the program
-	return EXIT_SUCCESS;
+	free(line);
+	return (ex);
 }
 
 /**
@@ -167,12 +167,8 @@ void execuut(char *path, char **argv, char **arg, int linec, char **env)
 	ret = execve(mycmd, arg, env);
 	if (ret == -1)
 	{
-<<<<<<< HEAD
 		_printf("%s: %d: %s: not found\n", argv[0], linec, arg[0]);
-=======
-		printf("%s: %d: %s: not found\n", argv[0], linec, arg[0]);
 		free(mycmd);
->>>>>>> 9fcdc42d9d8ce7ef32d1e9d6d68d38846703093e
 		exit(errno);
 	}
 }
