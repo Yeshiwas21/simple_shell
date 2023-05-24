@@ -160,7 +160,9 @@ int main(int ac, char **argv)
 /**
  * execuut - execute command
  * @path: the command path
- * @argv: the command and the argument
+ * @argv: the command and the argument for the file
+ * @arg: the command and args
+ * @linec: counter
  * Return: none
  */
 void execuut(char *path, char **argv, char **arg, int linec)
