@@ -144,9 +144,8 @@ int main(int ac, char **argv, char **env)
 			free(arg[w]);
 		free(arg);
 	}
-
-	free(line); // Free line before exiting the program
-	return EXIT_SUCCESS;
+	free(line);
+	return (EXIT_SUCCESS);
 }
 
 /**
