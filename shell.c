@@ -134,13 +134,13 @@ int main(int ac, char **argv, char **env)
 			}
 		}
 		no_token = 0;
-	}
 	free(line_cpy);
 	for (w = 0; w < no_token - 1; w++)
 	{
 		free(arg[w]);
 	}
 	free(arg);
+	}
 	return (EXIT_SUCCESS);
 }
 /**
@@ -162,6 +162,7 @@ void execuut(char *path, char **argv, char **arg, int linec, char **env)
 	if (ret == -1)
 	{
 		printf("%s: %d: %s: not found\n", argv[0], linec, arg[0]);
-		exit(errno);
+		free(mycmd);
+		free(errno);
 	}
 }
