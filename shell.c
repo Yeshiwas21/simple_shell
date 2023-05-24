@@ -124,7 +124,7 @@ int main(int ac, char **argv)
 
 		if (!path)
 		{
-			printf("%s: %d: %s: not found\n",argv[0], linec, arg[0]);
+			printf("%s: %d: %s: not found\n", argv[0], linec, arg[0]);
 			continue;
 		}
 		else
@@ -138,7 +138,7 @@ int main(int ac, char **argv)
 		else if (pid == 0)
 		{
 			execuut(path, argv, arg, linec);
-			continue;
+			/*continue;*/
 		}
 		else
 		{
@@ -172,7 +172,7 @@ void execuut(char *path, char **argv, char **arg, int linec)
 	ret = execve(mycmd, arg, NULL);
 	if (ret == -1)
 	{
-		 printf("%s: %d: %s: not found\n",argv[0], linec, arg[0]);
-		 exit(errno);
+		printf("%s: %d: %s: not found\n", argv[0], linec, arg[0]);
+		exit(errno);
 	}
 }
