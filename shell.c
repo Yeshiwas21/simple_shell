@@ -109,7 +109,7 @@ int main(int ac, char **argv, char **env)
 			path = get_cmdpath(arg[0]);
 			if (!path)
 			{
-				printf("%s: %d: %s: not found\n", argv[0], linec, arg[0]);
+				_printf("%s: %d: %s: not found\n", argv[0], linec, arg[0]);
 				ex = 127;
 				continue;
 			}
@@ -161,7 +161,7 @@ void execuut(char *path, char **argv, char **arg, int linec, char **env)
 	ret = execve(mycmd, arg, env);
 	if (ret == -1)
 	{
-		printf("%s: %d: %s: not found\n", argv[0], linec, arg[0]);
+		_printf("%s: %d: %s: not found\n", argv[0], linec, arg[0]);
 		exit(errno);
 	}
 }
