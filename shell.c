@@ -49,16 +49,8 @@ int main(int ac, char **argv, char **env)
 			{
 				write(1, "\n", 1);
 			}
+			free(line);
 			exit(0);
-		}
-		if (_strncmp(line, "exit\n", 5) == 0)
-		{
-			exit(0);
-		}
-		if (_strncmp(line, "env\n", 4) == 0)
-		{
-			print_env(env);
-			continue;
 		}
 		line_cpy = malloc(sizeof(char) * (j + 1));
 		if (line_cpy == NULL)
@@ -77,7 +69,6 @@ int main(int ac, char **argv, char **env)
 
 		if (arg == NULL)
 		{
-			free(line_cpy);
 			return (-1);
 		}
 		token = strtok(line_cpy, delim);
@@ -88,8 +79,6 @@ int main(int ac, char **argv, char **env)
 
 			if (arg[k] == NULL)
 			{
-				free(line_cpy);
-				free(arg);
 				return (-1);
 			}
 			_strcpy(arg[k], token);
@@ -97,42 +86,55 @@ int main(int ac, char **argv, char **env)
 			token = strtok(NULL, delim);
 		}
 		arg[k] = NULL;
+		if (_strncmp(line, "exit\n", 5) == 0 && arg[1] == NULL)
+                {
+			free(line);
+			free(line_cpy);
+			free(arg);
+                        exit(0);
+                }
+                if (_strncmp(line, "env\n", 4) == 0)
+                {
+                        print_env(env);
+                        continue;
+                }
 
 		if (arg[0] == NULL)
 			continue;
-
-		path = get_cmdpath(arg[0]);
-
-		if (!path)
-		{
-			printf("%s: %d: %s: not found\n", argv[0], linec, arg[0]);
-			continue;
-		}
 		else
 		{
-		pid = fork();
-		if (pid == -1)
-		{
-			write(2, "fork failed\n", 13);
-			break;
-		}
-		else if (pid == 0)
-		{
-			execuut(path, argv, arg, linec, env);
-		}
-		else
-		{
-			wait(&status);
-			if (WIFEXITED(status) && WEXITSTATUS(status) != 0)
-				return (WEXITSTATUS(status));
+			path = get_cmdpath(arg[0]);
+			if (!path)
+			{
+				printf("%s: %d: %s: not found\n", argv[0], linec, arg[0]);
+				continue;
+			}
+			else
+			{
+				pid = fork();
+				if (pid == -1)
+				{
+					write(2, "fork failed\n", 13);
+					break;
+				}
+				else if (pid == 0)
+				{
+					execuut(path, argv, arg, linec, env);
+				}
+				else
+				{
+					wait(&status);
+					if (WIFEXITED(status) && WEXITSTATUS(status) != 0)
+						return (WEXITSTATUS(status));
+				}
+			}
 		}
 		no_token = 0;
-		}
 	}
 	free(line_cpy);
 	for (w = 0; w < no_token - 1; w++)
 	{
-		free(argv[w]);
+		free(arg[w]);
 	}
 	free(arg);
 	return (EXIT_SUCCESS);
