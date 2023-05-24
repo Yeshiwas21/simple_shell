@@ -23,12 +23,14 @@ int main(int ac, char **argv, char **env)
 	int linec;
 	char *path;
 	char **arg;
+	int ex;
 
 	line = NULL;
 	line_cpy = NULL;
 	token = NULL;
 	path = NULL;
 	n = 0;
+	ex = 0;
 	linec = 0;
 	no_token = 0;
 	delim = " \n";
@@ -91,7 +93,7 @@ int main(int ac, char **argv, char **env)
 			free(line);
 			free(line_cpy);
 			free(arg);
-			exit(0);
+			exit(ex);
 		}
 		if (_strncmp(line, "env\n", 4) == 0)
 		{
@@ -107,6 +109,7 @@ int main(int ac, char **argv, char **env)
 			if (!path)
 			{
 				printf("%s: %d: %s: not found\n", argv[0], linec, arg[0]);
+				ex = 127;
 				continue;
 			}
 			else
