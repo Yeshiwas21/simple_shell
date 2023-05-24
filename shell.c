@@ -3,13 +3,12 @@ void execuut(char *path, char **argv, char **arg, int linec, char **env);
 /**
  * main - main entrance
  * @ac: argument count
- * @argv: arrray of argument pointer
+ * @argv: array of argument pointers
  * @env: environ parameter
  * Return: always success 0
  */
 int main(int ac, char **argv, char **env)
 {
-
 	char *line;
 	char *line_cpy;
 	char *token;
@@ -56,7 +55,7 @@ int main(int ac, char **argv, char **env)
 		line_cpy = malloc(sizeof(char) * (j + 1));
 		if (line_cpy == NULL)
 		{
-			return (-1);
+			exit(-1);
 		}
 		_strcpy(line_cpy, line);
 		token = strtok(line, delim);
@@ -70,7 +69,7 @@ int main(int ac, char **argv, char **env)
 
 		if (arg == NULL)
 		{
-			return (-1);
+			exit(-1);
 		}
 		token = strtok(line_cpy, delim);
 
@@ -80,7 +79,7 @@ int main(int ac, char **argv, char **env)
 
 			if (arg[k] == NULL)
 			{
-				return (-1);
+				exit(-1);
 			}
 			_strcpy(arg[k], token);
 
