@@ -21,7 +21,7 @@ char *get_cmdpath(char *cmd);
 char *get_env(void);
 int _strncmp(char *s1, char *s2, int n);
 char  *_strcat(char *dest, char *src);
-void print_env(void);
+void print_env(char **env);
 void *get_line(void);
 int _putchar(char c);
 void free_memory_pp(void **ptr);

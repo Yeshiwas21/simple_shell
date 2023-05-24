@@ -1,12 +1,12 @@
 #include "shell.h"
-void execuut(char *path, char **argv, char **arg, int linec);
+void execuut(char *path, char **argv, char **arg, int linec, char **env);
 /**
  * main - main entrance
  * @ac: argument count
  * @argv: arrray of argument pointer
  * Return: always success 0
  */
-int main(int ac, char **argv)
+int main(int ac, char **argv, char **env)
 {
 
 	char *line;
@@ -57,7 +57,8 @@ int main(int ac, char **argv)
 		}
 		if (_strncmp(line, "env\n", 4) == 0)
 		{
-			print_env();
+			print_env(env);
+			continue;
 		}
 		line_cpy = malloc(sizeof(char) * (j + 1));
 		if (line_cpy == NULL)
@@ -117,13 +118,13 @@ int main(int ac, char **argv)
 		}
 		else if (pid == 0)
 		{
-			execuut(path, argv, arg, linec);
+			execuut(path, argv, arg, linec, env);
 		}
 		else
 		{
 			wait(&status);
 			if (WIFEXITED(status) && WEXITSTATUS(status) != 0)
-			return (WEXITSTATUS(status));
+				return (WEXITSTATUS(status));
 		}
 		no_token = 0;
 		}
@@ -144,13 +145,13 @@ int main(int ac, char **argv)
  * @linec: counter
  * Return: none
  */
-void execuut(char *path, char **argv, char **arg, int linec)
+void execuut(char *path, char **argv, char **arg, int linec, char **env)
 {
 	char *mycmd;
 	int ret;
 
 	mycmd = path;
-	ret = execve(mycmd, arg, NULL);
+	ret = execve(mycmd, arg, env);
 	if (ret == -1)
 	{
 		printf("%s: %d: %s: not found\n", argv[0], linec, arg[0]);
