@@ -38,6 +38,8 @@ char *get_cmdpath(char *cmd)
 	char *path, *path_cpy, *token, *cmd_path;
 	int cmd_len, dir_len;
 	struct stat buf;
+	int i;
+	char *temp;
 
 	path = get_env();
 	if (path)
@@ -71,6 +73,17 @@ char *get_cmdpath(char *cmd)
 			return (cmd);
 		}
 		return (NULL);
+	}
+	else
+	{
+		for (i = 0; path[i] != '\0'; i++)
+		{
+			temp = "path[i]";
+			if (_strcmp(temp, "/") == 0)
+			{
+				return (path);
+			}
+		}
 	}
 	return (NULL);
 }
